@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja"> 
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -11,42 +11,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root {
-  --ink: #1a1209; --ink2: #3d2e18; --ink3: #7a6040; --ink4: #b89d72;
-  --paper: #faf7f0; --paper2: #f2ece0; --paper3: #e8dfc8; --border: #d4c4a0;
-  --red: #8b1a1a; --red2: #a02020; --gold: #c9a227; --gold-bg: #c9a22718;
-  --red-bg: #8b1a1a18; --green: #2d6a4f; --green-bg: #2d6a4f15;
-  --serif: 'Noto Serif JP', serif; --sans: 'Noto Sans JP', sans-serif;
-  --st: env(safe-area-inset-top,0px); --sb: env(safe-area-inset-bottom,0px);
-}
+:root{--ink:#1a1209;--ink2:#3d2e18;--ink3:#7a6040;--ink4:#b89d72;--paper:#faf7f0;--paper2:#f2ece0;--paper3:#e8dfc8;--border:#d4c4a0;--red:#8b1a1a;--gold:#c9a227;--gold-bg:#c9a22718;--red-bg:#8b1a1a18;--serif:'Noto Serif JP',serif;--sans:'Noto Sans JP',sans-serif;--st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{background:var(--paper);color:var(--ink);font-family:var(--sans);min-height:100vh;overflow-x:hidden;padding-bottom:calc(68px + var(--sb))}
-/* HEADER */
 .hdr{background:var(--ink);color:var(--paper);padding:calc(var(--st) + 14px) 18px 14px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between}
 .hdr-title{font-family:var(--serif);font-size:21px;font-weight:700;letter-spacing:.12em}
 .hdr-sub{font-size:10px;color:var(--ink4);letter-spacing:.15em;margin-top:1px}
-.hdr-btns{display:flex;gap:10px}
-.ibtn{background:none;border:1px solid #fff2;color:var(--paper);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:background .15s}
-.ibtn:active{background:#fff2}
-/* NAV */
+.ibtn{background:none;border:1px solid #fff2;color:var(--paper);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px}
 .bnav{position:fixed;bottom:0;left:0;right:0;background:var(--ink);display:flex;padding-bottom:var(--sb);z-index:100;border-top:1px solid #fff1}
 .ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 0;cursor:pointer;color:var(--ink4);font-size:10px;letter-spacing:.04em;transition:color .15s;border:none;background:none;font-family:var(--sans)}
-.ni.active{color:var(--gold)}
-.ni svg{width:21px;height:21px}
-/* PAGES */
+.ni.active{color:var(--gold)}.ni svg{width:21px;height:21px}
 .page{display:none}.page.active{display:block}
-/* SEARCH */
 .sbar{padding:10px 14px;background:var(--paper2);border-bottom:1px solid var(--border);display:flex;gap:8px}
 .sinput{flex:1;background:var(--paper);border:1px solid var(--border);border-radius:18px;padding:7px 14px;font-size:14px;font-family:var(--sans);color:var(--ink);outline:none}
 .sinput::placeholder{color:var(--ink4)}
 .fbtn{background:var(--paper);border:1px solid var(--border);border-radius:18px;padding:7px 12px;font-size:12px;font-family:var(--sans);color:var(--ink2);cursor:pointer;white-space:nowrap}
 .fbtn.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-/* SORT ROW */
 .srow{padding:8px 14px;display:flex;gap:6px;overflow-x:auto;background:var(--paper2);border-bottom:1px solid var(--border);scrollbar-width:none}
 .srow::-webkit-scrollbar{display:none}
 .tbtn{background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:4px 11px;font-size:12px;font-family:var(--sans);color:var(--ink3);cursor:pointer;white-space:nowrap;transition:all .15s}
 .tbtn.on{background:var(--red);color:#fff;border-color:var(--red)}
-/* LIST */
 .slist{padding:10px 14px;display:flex;flex-direction:column;gap:9px}
 .card{background:var(--paper);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;cursor:pointer;transition:transform .1s}
 .card:active{transform:scale(.98)}
@@ -62,61 +46,54 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);min-height
 .stars{display:flex;gap:1px}
 .st{font-size:12px;color:var(--gold)}.st.e{color:var(--border)}
 .cdate{font-size:10px;color:var(--ink4)}
-/* EMPTY */
 .empty{padding:60px 20px;text-align:center;color:var(--ink3)}
 .empty .ico{font-size:44px;margin-bottom:14px;opacity:.4}
 .empty h3{font-family:var(--serif);font-size:17px;margin-bottom:7px;color:var(--ink2)}
 .empty p{font-size:13px;line-height:1.8}
-/* FAB */
 .fab{position:fixed;bottom:calc(68px + var(--sb) + 14px);right:18px;width:54px;height:54px;background:var(--red);color:#fff;border:none;border-radius:50%;font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(139,26,26,.4);z-index:90;transition:transform .15s}
 .fab:active{transform:scale(.92)}
-/* FORM PAGE */
-.fhdr{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;background:var(--paper)}
+.fhdr{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;background:var(--paper);position:sticky;top:0;z-index:10}
 .back{background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink3);padding:4px}
 .ftitle{font-family:var(--serif);font-size:17px;font-weight:500}
 .fbody{padding:14px 18px}
 .fsec{margin-bottom:18px}
 .flbl{font-size:11px;font-weight:500;color:var(--ink3);letter-spacing:.1em;margin-bottom:5px;display:block}
 .finput{width:100%;background:var(--paper);border:1px solid var(--border);border-radius:9px;padding:9px 12px;font-size:14px;font-family:var(--sans);color:var(--ink);outline:none;transition:border-color .15s}
-.finput:focus{border-color:var(--red)}
-.finput::placeholder{color:var(--ink4)}
+.finput:focus{border-color:var(--red)}.finput::placeholder{color:var(--ink4)}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .fsel{width:100%;background:var(--paper);border:1px solid var(--border);border-radius:9px;padding:9px 12px;font-size:14px;font-family:var(--sans);color:var(--ink);outline:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23b89d72' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
-/* PHOTO */
-.photo-wrap{background:var(--paper2);border:2px dashed var(--border);border-radius:11px;padding:20px;text-align:center;cursor:pointer;position:relative;overflow:hidden;transition:border-color .15s}
-.photo-wrap:active{border-color:var(--red)}
+.cat-btns{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.cat-btn{background:var(--paper2);border:1px solid var(--border);border-radius:9px;padding:7px 13px;font-size:13px;font-family:var(--sans);color:var(--ink3);cursor:pointer;transition:all .15s}
+.cat-btn.on{background:var(--red);color:#fff;border-color:var(--red)}
+.sub-btns{display:flex;flex-wrap:wrap;gap:5px}
+.sub-btn{background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:5px 10px;font-size:12px;font-family:var(--sans);color:var(--ink3);cursor:pointer;transition:all .15s}
+.sub-btn.on{background:var(--ink2);color:#fff;border-color:var(--ink2)}
+.photo-wrap{background:var(--paper2);border:2px dashed var(--border);border-radius:11px;padding:20px;text-align:center;cursor:pointer;position:relative;overflow:hidden}
 .photo-wrap input{position:absolute;inset:0;opacity:0;cursor:pointer}
 .photo-prev{width:100%;max-height:180px;object-fit:cover;border-radius:8px;display:none}
-.photo-ph{pointer-events:none}
 .photo-ico{font-size:28px;color:var(--ink4);margin-bottom:6px}
-.photo-txt{font-size:12px;color:var(--ink3)}
-.photo-sub{font-size:10px;color:var(--ink4);margin-top:3px}
-/* AI */
+.photo-txt{font-size:12px;color:var(--ink3)}.photo-sub{font-size:10px;color:var(--ink4);margin-top:3px}
 .ai-loading{display:none;align-items:center;gap:6px;padding:10px;font-size:12px;color:var(--ink3)}
 .ai-loading.show{display:flex}
 .spin{width:14px;height:14px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .ai-box{background:var(--gold-bg);border:1px solid var(--gold);border-radius:9px;padding:11px 13px;margin-top:8px;display:none}
 .ai-box-ttl{font-size:10px;color:var(--gold);font-weight:500;letter-spacing:.1em;margin-bottom:7px}
-.ai-row{display:flex;justify-content:space-between;font-size:12px;padding:3px 0;border-bottom:1px solid var(--gold-bg)}
+.ai-row{display:flex;justify-content:space-between;font-size:12px;padding:3px 0;border-bottom:1px solid #c9a22720}
 .ai-row:last-of-type{border-bottom:none}
 .ai-key{color:var(--ink3)}.ai-val{color:var(--ink);font-weight:500}
 .ai-apply{background:var(--gold);color:#fff;border:none;border-radius:7px;padding:7px 14px;font-size:12px;font-family:var(--sans);cursor:pointer;margin-top:8px;width:100%}
-/* STARS INPUT */
 .star-in{display:flex;gap:6px}
 .star-in input{display:none}
 .star-in label{font-size:26px;cursor:pointer;color:var(--border);transition:color .1s}
 .star-in label.on{color:var(--gold)}
-/* TASTE */
 .taste-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .taste-item label{display:block;font-size:11px;color:var(--ink3);margin-bottom:3px}
 .taste-slider{width:100%;accent-color:var(--red)}
 .taste-ends{display:flex;justify-content:space-between;font-size:9px;color:var(--ink4);margin-top:1px}
-/* SUBMIT */
-.sbtn{background:var(--red);color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-family:var(--serif);font-weight:500;cursor:pointer;width:100%;letter-spacing:.05em;margin-top:6px;transition:opacity .15s}
+.sbtn{background:var(--red);color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-family:var(--serif);font-weight:500;cursor:pointer;width:100%;letter-spacing:.05em;margin-top:6px}
 .sbtn:active{opacity:.85}
 .dbtn{background:none;color:var(--red);border:1px solid var(--red);border-radius:12px;padding:12px;font-size:13px;font-family:var(--sans);cursor:pointer;width:100%;margin-top:8px;display:none}
-/* DETAIL */
 .dov{position:fixed;inset:0;background:var(--paper);z-index:150;display:none;overflow-y:auto;padding-bottom:40px}
 .dov.open{display:block}
 .dhdr{background:var(--ink);padding:calc(var(--st) + 14px) 18px 18px;color:var(--paper)}
@@ -138,7 +115,6 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);min-height
 .dk{color:var(--ink3)}.dv{color:var(--ink);font-weight:500}
 .dmemo{background:var(--paper2);border-radius:9px;padding:13px;font-size:13px;line-height:1.9;color:var(--ink2);font-family:var(--serif)}
 .radar-wrap{display:flex;justify-content:center;padding:8px 0}
-/* REPORT */
 .rphdr{padding:18px 18px 10px}
 .rptitle{font-family:var(--serif);font-size:19px;font-weight:700;margin-bottom:3px}
 .rpsub{font-size:12px;color:var(--ink3)}
@@ -146,96 +122,80 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);min-height
 .scard{background:var(--paper2);border:1px solid var(--border);border-radius:11px;padding:13px;text-align:center}
 .snum{font-family:var(--serif);font-size:26px;font-weight:700}
 .slbl{font-size:10px;color:var(--ink3);margin-top:3px;letter-spacing:.04em}
-.chart-wrap{padding:10px 14px;margin-bottom:4px}
-.chart-ttl{font-size:11px;color:var(--ink3);letter-spacing:.1em;margin-bottom:8px;font-weight:500}
+.chart-wrap{padding:8px 14px 4px}
+.chart-ttl{font-size:11px;color:var(--ink3);letter-spacing:.1em;margin-bottom:8px;font-weight:500;display:flex;align-items:center;justify-content:space-between}
 .chart-box{background:var(--paper2);border:1px solid var(--border);border-radius:11px;padding:14px}
-/* PREF LIST */
-.plist{padding:8px 14px 20px}
+.map-toggle{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.map-tbtn{background:none;border:none;padding:4px 10px;font-size:11px;font-family:var(--sans);cursor:pointer;color:var(--ink3)}
+.map-tbtn.on{background:var(--ink);color:var(--paper)}
+.map-wrap{position:relative}
+.map-tooltip{position:absolute;background:var(--ink);color:var(--paper);padding:4px 10px;border-radius:8px;font-size:11px;pointer-events:none;display:none;z-index:10;white-space:nowrap}
+.japan-map path{stroke:#faf7f0;stroke-width:0.5;cursor:pointer;transition:opacity .15s}
+.japan-map path:hover{opacity:.75}
+.plist{padding:8px 14px 4px}
 .pttl{font-size:11px;color:var(--ink3);letter-spacing:.1em;margin-bottom:9px;font-weight:500}
 .pitem{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--paper3)}
 .pitem:last-child{border-bottom:none}
 .pname{font-size:13px;flex:1;font-family:var(--serif)}
 .pbar-w{flex:2;background:var(--paper3);border-radius:3px;height:5px;overflow:hidden}
-.pbar{height:100%;background:var(--red);border-radius:3px;transition:width .4s}
+.pbar{height:100%;background:var(--red);border-radius:3px}
 .pcnt{font-size:11px;color:var(--ink3);min-width:20px;text-align:right}
-/* TOP */
 .toplist{padding:8px 14px 20px}
 .titem{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--paper3);cursor:pointer}
 .trank{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink4);min-width:22px}
 .trank.r1{color:var(--gold)}.trank.r2{color:var(--ink3)}.trank.r3{color:#8b6040}
-.tinfo{flex:1}
-.tname{font-family:var(--serif);font-size:13px}
-.tbrew{font-size:10px;color:var(--ink3)}
-/* SYNC */
+.tinfo{flex:1}.tname{font-family:var(--serif);font-size:13px}.tbrew{font-size:10px;color:var(--ink3)}
 .sbadge{position:fixed;top:calc(var(--st) + 64px);left:50%;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:5px 14px;border-radius:18px;font-size:11px;z-index:300;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
 .sbadge.show{opacity:1}
-/* OFFLINE */
 .offbanner{background:#8b3a1a;color:#fff;text-align:center;font-size:11px;padding:5px;display:none}
 .offbanner.show{display:block}
 </style>
 </head>
 <body>
-
 <div class="offbanner" id="offBanner">オフライン — ネット接続を確認してください</div>
 <div class="sbadge" id="syncBadge"></div>
-
 <header class="hdr">
-  <div>
-    <div class="hdr-title">酒帳</div>
-    <div class="hdr-sub" id="hdrSub">読み込み中...</div>
-  </div>
-  <div class="hdr-btns">
-    <button class="ibtn" onclick="switchPage('add')" title="記録">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-    </button>
-  </div>
+  <div><div class="hdr-title">酒帳</div><div class="hdr-sub" id="hdrSub">読み込み中...</div></div>
+  <button class="ibtn" onclick="switchPage('add')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  </button>
 </header>
 
-<!-- LIST PAGE -->
+<!-- LIST -->
 <div class="page active" id="page-list">
   <div class="sbar">
-    <input class="sinput" id="searchInput" type="search" placeholder="銘柄・蔵元を検索...">
-    <button class="fbtn" id="prefBtn" onclick="cyclePref()">都道府県 ▾</button>
+    <input class="sinput" id="searchInput" type="search" placeholder="銘柄・蔵元・酒米を検索...">
+    <button class="fbtn" id="prefBtn" onclick="cyclePref()">産地 ▾</button>
   </div>
-  <div class="srow" id="typeRow">
+  <div class="srow">
     <button class="tbtn on" onclick="filterType('all',this)">すべて</button>
-    <button class="tbtn" onclick="filterType('純米大吟醸',this)">純米大吟醸</button>
-    <button class="tbtn" onclick="filterType('純米吟醸',this)">純米吟醸</button>
-    <button class="tbtn" onclick="filterType('純米',this)">純米</button>
-    <button class="tbtn" onclick="filterType('吟醸',this)">吟醸</button>
-    <button class="tbtn" onclick="filterType('本醸造',this)">本醸造</button>
-    <button class="tbtn" onclick="filterType('生酒',this)">生酒</button>
-    <button class="tbtn" onclick="filterType('にごり酒',this)">にごり酒</button>
+    <button class="tbtn" onclick="filterType('日本酒',this)">日本酒</button>
     <button class="tbtn" onclick="filterType('ビール',this)">ビール</button>
     <button class="tbtn" onclick="filterType('ワイン',this)">ワイン</button>
     <button class="tbtn" onclick="filterType('焼酎',this)">焼酎</button>
     <button class="tbtn" onclick="filterType('ウイスキー',this)">ウイスキー</button>
+    <button class="tbtn" onclick="filterType('その他',this)">その他</button>
   </div>
   <div class="slist" id="sakeList"></div>
   <div class="empty" id="emptyState" style="display:none">
-    <div class="ico">🍶</div>
-    <h3>まだ記録がありません</h3>
+    <div class="ico">🍶</div><h3>まだ記録がありません</h3>
     <p>右上の＋ボタンで<br>最初の一本を記録しましょう</p>
   </div>
 </div>
 
-<!-- ADD PAGE -->
+<!-- ADD -->
 <div class="page" id="page-add">
   <div class="fhdr">
     <button class="back" onclick="switchPage('list')">←</button>
     <div class="ftitle" id="addTitle">新しい記録</div>
   </div>
-  <div class="fbody" id="addForm">
+  <div class="fbody">
     <div class="fsec">
       <label class="flbl">ラベル写真</label>
-      <div class="photo-wrap" id="photoWrap">
+      <div class="photo-wrap">
         <input type="file" accept="image/*" capture="camera" id="photoInput" onchange="handlePhoto(event)">
         <img class="photo-prev" id="photoPrev">
-        <div id="photoPh" class="photo-ph">
-          <div class="photo-ico">📷</div>
-          <div class="photo-txt">写真を撮る・選ぶ</div>
-          <div class="photo-sub">AIがラベルから情報を自動読み取り</div>
-        </div>
+        <div id="photoPh"><div class="photo-ico">📷</div><div class="photo-txt">写真を撮る・選ぶ</div><div class="photo-sub">AIがラベルから情報を自動読み取り</div></div>
       </div>
       <div class="ai-loading" id="aiLoad"><div class="spin"></div>AIがラベルを解析中...</div>
       <div class="ai-box" id="aiBox">
@@ -245,60 +205,56 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);min-height
       </div>
     </div>
     <div class="fsec">
-      <label class="flbl">銘柄名</label>
-      <input class="finput" id="f_name" type="text" placeholder="例）獺祭、久保田">
+      <label class="flbl">カテゴリ・種別</label>
+      <div class="cat-btns" id="catBtns"></div>
+      <div class="sub-btns" id="subBtns"></div>
+      <input type="hidden" id="f_category"><input type="hidden" id="f_type">
     </div>
+    <div class="fsec"><label class="flbl">銘柄名</label><input class="finput" id="f_name" type="text" placeholder="例）獺祭 二割三分、久保田 萬寿" list="dl_name" autocomplete="off"><datalist id="dl_name"></datalist></div>
+    <div class="fsec"><label class="flbl">蔵元・メーカー</label><input class="finput" id="f_brewery" type="text" placeholder="例）旭酒造" list="dl_brewery" autocomplete="off"><datalist id="dl_brewery"></datalist></div>
     <div class="fsec">
-      <label class="flbl">蔵元</label>
-      <input class="finput" id="f_brewery" type="text" placeholder="例）旭酒造">
-    </div>
-    <div class="fsec">
+      <label class="flbl">産地</label>
       <div class="frow">
-        <div>
-          <label class="flbl">種別</label>
-          <select class="fsel" id="f_type">
-            <option value="日本酒">日本酒（種別未選択）</option>
-            <option>純米大吟醸</option><option>純米吟醸</option><option>純米</option>
-            <option>吟醸</option><option>本醸造</option><option>特別本醸造</option>
-            <option>生酒</option><option>にごり酒</option><option>古酒</option>
-            <option>ビール</option><option>クラフトビール</option>
-            <option>ワイン</option><option>焼酎</option><option>ウイスキー</option>
-          </select>
-        </div>
-        <div>
-          <label class="flbl">都道府県</label>
-          <select class="fsel" id="f_pref">
-            <option value="">選択...</option>
-            <option>北海道</option><option>青森</option><option>岩手</option><option>宮城</option><option>秋田</option><option>山形</option><option>福島</option>
-            <option>茨城</option><option>栃木</option><option>群馬</option><option>埼玉</option><option>千葉</option><option>東京</option><option>神奈川</option>
-            <option>新潟</option><option>富山</option><option>石川</option><option>福井</option><option>山梨</option><option>長野</option><option>岐阜</option>
-            <option>静岡</option><option>愛知</option><option>三重</option><option>滋賀</option><option>京都</option><option>大阪</option><option>兵庫</option>
-            <option>奈良</option><option>和歌山</option><option>鳥取</option><option>島根</option><option>岡山</option><option>広島</option><option>山口</option>
-            <option>徳島</option><option>香川</option><option>愛媛</option><option>高知</option><option>福岡</option><option>佐賀</option><option>長崎</option>
-            <option>熊本</option><option>大分</option><option>宮崎</option><option>鹿児島</option><option>沖縄</option>
-          </select>
+        <select class="fsel" id="f_pref">
+          <option value="">都道府県...</option>
+          <option>北海道</option><option>青森</option><option>岩手</option><option>宮城</option><option>秋田</option><option>山形</option><option>福島</option>
+          <option>茨城</option><option>栃木</option><option>群馬</option><option>埼玉</option><option>千葉</option><option>東京</option><option>神奈川</option>
+          <option>新潟</option><option>富山</option><option>石川</option><option>福井</option><option>山梨</option><option>長野</option><option>岐阜</option>
+          <option>静岡</option><option>愛知</option><option>三重</option><option>滋賀</option><option>京都</option><option>大阪</option><option>兵庫</option>
+          <option>奈良</option><option>和歌山</option><option>鳥取</option><option>島根</option><option>岡山</option><option>広島</option><option>山口</option>
+          <option>徳島</option><option>香川</option><option>愛媛</option><option>高知</option><option>福岡</option><option>佐賀</option><option>長崎</option>
+          <option>熊本</option><option>大分</option><option>宮崎</option><option>鹿児島</option><option>沖縄</option>
+        </select>
+        <input class="finput" id="f_country" type="text" placeholder="国名（海外の場合）">
+      </div>
+    </div>
+    <div id="nihonshu-detail" style="display:none">
+      <div class="fsec">
+        <label class="flbl">精米歩合・酒米</label>
+        <div class="frow">
+          <input class="finput" id="f_polish" type="text" placeholder="精米歩合 例）50%">
+          <input class="finput" id="f_rice" type="text" placeholder="酒米 例）山田錦" list="dl_rice" autocomplete="off"><datalist id="dl_rice"><option>山田錦</option><option>五百万石</option><option>雄町</option><option>美山錦</option><option>八反錦</option><option>出羽燦々</option><option>愛山</option><option>千本錦</option><option>吟吹雪</option><option>強力</option><option>亀の尾</option><option>神力</option><option>渡船</option><option>越淡麗</option><option>華吹雪</option><option>きたしずく</option><option>吟風</option><option>夢錦</option><option>酒未来</option></datalist>
         </div>
       </div>
-    </div>
-    <div class="fsec">
-      <div class="frow">
-        <div><label class="flbl">精米歩合</label><input class="finput" id="f_polish" type="text" placeholder="例）50%"></div>
-        <div><label class="flbl">酒米</label><input class="finput" id="f_rice" type="text" placeholder="例）山田錦"></div>
+      <div class="fsec">
+        <label class="flbl">日本酒度・酸度</label>
+        <div class="frow">
+          <input class="finput" id="f_smv" type="text" placeholder="日本酒度 例）+3">
+          <input class="finput" id="f_acid" type="text" placeholder="酸度 例）1.4">
+        </div>
       </div>
     </div>
     <div class="fsec">
+      <label class="flbl">購入情報</label>
       <div class="frow">
-        <div><label class="flbl">購入価格</label><input class="finput" id="f_price" type="number" placeholder="¥"></div>
-        <div><label class="flbl">購入場所</label><input class="finput" id="f_place" type="text" placeholder="例）近藤酒店"></div>
+        <input class="finput" id="f_price" type="number" placeholder="価格 ¥">
+        <input class="finput" id="f_place" type="text" placeholder="購入場所" list="dl_place" autocomplete="off"><datalist id="dl_place"></datalist>
       </div>
     </div>
-    <div class="fsec">
-      <label class="flbl">飲んだ日</label>
-      <input class="finput" id="f_date" type="date">
-    </div>
+    <div class="fsec"><label class="flbl">飲んだ日</label><input class="finput" id="f_date" type="date"></div>
     <div class="fsec">
       <label class="flbl">評価</label>
-      <div class="star-in" id="starIn">
+      <div class="star-in">
         <input type="radio" name="rt" id="s5" value="5"><label for="s5">★</label>
         <input type="radio" name="rt" id="s4" value="4"><label for="s4">★</label>
         <input type="radio" name="rt" id="s3" value="3" checked><label for="s3">★</label>
@@ -309,66 +265,45 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);min-height
     <div class="fsec">
       <label class="flbl">味わい</label>
       <div class="taste-grid">
-        <div class="taste-item">
-          <label>甘辛</label>
-          <input type="range" class="taste-slider" id="t_sweet" min="1" max="5" value="3">
-          <div class="taste-ends"><span>甘</span><span>辛</span></div>
-        </div>
-        <div class="taste-item">
-          <label>濃淡</label>
-          <input type="range" class="taste-slider" id="t_body" min="1" max="5" value="3">
-          <div class="taste-ends"><span>淡麗</span><span>濃醇</span></div>
-        </div>
-        <div class="taste-item">
-          <label>酸味</label>
-          <input type="range" class="taste-slider" id="t_acid" min="1" max="5" value="3">
-          <div class="taste-ends"><span>低</span><span>高</span></div>
-        </div>
-        <div class="taste-item">
-          <label>余韻</label>
-          <input type="range" class="taste-slider" id="t_finish" min="1" max="5" value="3">
-          <div class="taste-ends"><span>短</span><span>長</span></div>
-        </div>
+        <div class="taste-item"><label>甘辛</label><input type="range" class="taste-slider" id="t_sweet" min="1" max="5" value="3"><div class="taste-ends"><span>甘</span><span>辛</span></div></div>
+        <div class="taste-item"><label>濃淡</label><input type="range" class="taste-slider" id="t_body" min="1" max="5" value="3"><div class="taste-ends"><span>淡麗</span><span>濃醇</span></div></div>
+        <div class="taste-item"><label>酸味</label><input type="range" class="taste-slider" id="t_sour" min="1" max="5" value="3"><div class="taste-ends"><span>低</span><span>高</span></div></div>
+        <div class="taste-item"><label>余韻</label><input type="range" class="taste-slider" id="t_finish" min="1" max="5" value="3"><div class="taste-ends"><span>短</span><span>長</span></div></div>
       </div>
     </div>
-    <div class="fsec">
-      <label class="flbl">メモ・感想</label>
-      <textarea class="finput" id="f_memo" rows="4" placeholder="香り、飲み心地、合う料理など..."></textarea>
-    </div>
+    <div class="fsec"><label class="flbl">メモ・感想</label><textarea class="finput" id="f_memo" rows="4" placeholder="香り、飲み心地、合う料理など..."></textarea></div>
     <button class="sbtn" onclick="saveSake()">記録する</button>
     <button class="dbtn" id="deleteBtn" onclick="deleteSake()">この記録を削除</button>
+    <div style="height:20px"></div>
   </div>
 </div>
 
-<!-- REPORT PAGE -->
+<!-- REPORT -->
 <div class="page" id="page-report">
-  <div class="rphdr">
-    <div class="rptitle">レポート</div>
-    <div class="rpsub" id="rpSub">家族の記録から集計</div>
-  </div>
+  <div class="rphdr"><div class="rptitle">レポート</div><div class="rpsub" id="rpSub">家族の記録から集計</div></div>
   <div class="sgrid">
     <div class="scard"><div class="snum" id="stTotal">0</div><div class="slbl">総記録数</div></div>
-    <div class="scard"><div class="snum" id="stPrefs">0</div><div class="slbl">都道府県数</div></div>
+    <div class="scard"><div class="snum" id="stPrefs">0</div><div class="slbl">産地数</div></div>
     <div class="scard"><div class="snum" id="stAvg">—</div><div class="slbl">平均評価</div></div>
     <div class="scard"><div class="snum" id="stMonth">0</div><div class="slbl">今月の記録</div></div>
   </div>
   <div class="chart-wrap">
-    <div class="chart-ttl">種別内訳</div>
-    <div class="chart-box"><canvas id="typeChart" height="180"></canvas></div>
+    <div class="chart-ttl"><span>産地マップ</span>
+      <div class="map-toggle">
+        <button class="map-tbtn on" id="mapJpBtn" onclick="switchMap('japan')">日本</button>
+        <button class="map-tbtn" id="mapWdBtn" onclick="switchMap('world')">世界</button>
+      </div>
+    </div>
+    <div class="chart-box map-wrap" id="mapWrap"><div class="map-tooltip" id="mapTip"></div><div id="mapContainer"></div></div>
   </div>
-  <div class="chart-wrap">
-    <div class="chart-ttl">月別記録数</div>
-    <div class="chart-box"><canvas id="monthChart" height="160"></canvas></div>
-  </div>
-  <div class="chart-wrap">
-    <div class="chart-ttl">評価 × 価格（四象限）</div>
-    <div class="chart-box"><canvas id="quadChart" height="200"></canvas></div>
-  </div>
+  <div class="chart-wrap"><div class="chart-ttl">種別内訳</div><div class="chart-box"><canvas id="typeChart" height="180"></canvas></div></div>
+  <div class="chart-wrap"><div class="chart-ttl">月別記録数</div><div class="chart-box"><canvas id="monthChart" height="160"></canvas></div></div>
+  <div class="chart-wrap"><div class="chart-ttl">評価 × 価格（四象限）</div><div class="chart-box"><canvas id="quadChart" height="200"></canvas></div></div>
+  <div class="plist" id="riceList"></div>
   <div class="plist" id="prefList"></div>
   <div class="toplist" id="topList"></div>
 </div>
 
-<!-- BOTTOM NAV -->
 <nav class="bnav">
   <button class="ni active" id="nav-list" onclick="switchPage('list')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>一覧
@@ -381,30 +316,20 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);min-height
   </button>
 </nav>
 
-<!-- DETAIL OVERLAY -->
+<!-- DETAIL -->
 <div class="dov" id="detailOv">
   <div class="dhdr">
     <button class="dback" onclick="closeDetail()">← 一覧へ</button>
-    <div class="dname" id="d_name"></div>
-    <div class="dbrew" id="d_brew"></div>
-    <div class="dstars" id="d_stars"></div>
-    <div class="dtags" id="d_tags"></div>
+    <div class="dname" id="d_name"></div><div class="dbrew" id="d_brew"></div>
+    <div class="dstars" id="d_stars"></div><div class="dtags" id="d_tags"></div>
   </div>
   <div class="dimg" id="d_img"><div class="diph">🍶</div></div>
   <div class="dbody">
     <div class="dsec"><div class="dsec-ttl">基本情報</div><div id="d_rows"></div></div>
-    <div class="dsec" id="d_taste_sec">
-      <div class="dsec-ttl">味わい</div>
-      <div class="radar-wrap"><canvas id="radarC" width="200" height="200"></canvas></div>
-    </div>
-    <div class="dsec" id="d_memo_sec" style="display:none">
-      <div class="dsec-ttl">メモ・感想</div>
-      <div class="dmemo" id="d_memo"></div>
-    </div>
+    <div class="dsec"><div class="dsec-ttl">味わい</div><div class="radar-wrap"><canvas id="radarC" width="200" height="200"></canvas></div></div>
+    <div class="dsec" id="d_memo_sec" style="display:none"><div class="dsec-ttl">メモ・感想</div><div class="dmemo" id="d_memo"></div></div>
   </div>
-  <div style="padding:0 18px">
-    <button class="sbtn" style="background:var(--ink2)" onclick="editCurrent()">編集する</button>
-  </div>
+  <div style="padding:0 18px 20px"><button class="sbtn" style="background:var(--ink2)" onclick="editCurrent()">編集する</button></div>
 </div>
 
 <script type="module">
@@ -429,465 +354,510 @@ const db = getDatabase(app);
 const storage = getStorage(app);
 getAnalytics(app);
 
-// ===== STATE =====
-let sakes = {};
-let filterType = 'all';
-let filterPref = '';
-let filterSearch = '';
-let editingId = null;
-let currentDetailId = null;
-let aiData = null;
-let photoBase64 = null;
-let chartInstances = {};
+const CATEGORIES = {
+  '日本酒': ['純米大吟醸','純米吟醸','純米','大吟醸','吟醸','本醸造','特別本醸造','生酒','にごり酒','古酒','生もと','山廃'],
+  'ビール': ['ラガー','エール','IPA','スタウト','ヴァイツェン','ピルスナー','サワー','その他クラフト'],
+  'ワイン': ['赤ワイン','白ワイン','ロゼ','スパークリング','シャンパン','自然派'],
+  '焼酎': ['芋焼酎','麦焼酎','米焼酎','そば焼酎','黒糖焼酎','泡盛'],
+  'ウイスキー': ['シングルモルト','ブレンデッド','バーボン','ライ','アイリッシュ','ジャパニーズ'],
+  'その他': ['梅酒','リキュール','ジン','ラム','テキーラ','ブランデー','その他'],
+};
 
-// ===== FIREBASE REALTIME SYNC =====
-const sakesRef = ref(db, 'sakes');
+let sakes={}, currentFilter='all', filterPref='', filterSearch='', editingId=null, currentDetailId=null, aiData=null, photoBase64=null, chartInstances={}, currentMap='japan';
+
+const sakesRef = ref(db,'sakes');
 onValue(sakesRef, snap => {
-  sakes = snap.val() || {};
+  sakes = snap.val()||{};
   renderList();
-  const cnt = Object.keys(sakes).length;
-  document.getElementById('hdrSub').textContent = `${cnt}本の記録`;
+  document.getElementById('hdrSub').textContent = Object.keys(sakes).length+'本の記録';
   showSync('同期完了');
+  if(typeof updateDatalist === 'function') updateDatalist();
 });
 
-// ===== OFFLINE DETECTION =====
-window.addEventListener('online', () => document.getElementById('offBanner').classList.remove('show'));
-window.addEventListener('offline', () => document.getElementById('offBanner').classList.add('show'));
+window.addEventListener('online',()=>document.getElementById('offBanner').classList.remove('show'));
+window.addEventListener('offline',()=>document.getElementById('offBanner').classList.add('show'));
 
-// ===== SYNC BADGE =====
 window.showSync = msg => {
-  const b = document.getElementById('syncBadge');
-  b.textContent = msg; b.classList.add('show');
-  setTimeout(() => b.classList.remove('show'), 2000);
+  const b=document.getElementById('syncBadge');
+  b.textContent=msg; b.classList.add('show');
+  setTimeout(()=>b.classList.remove('show'),2000);
 };
 
-// ===== PAGE SWITCH =====
 window.switchPage = name => {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.ni').forEach(n => n.classList.remove('active'));
-  document.getElementById('page-' + name)?.classList.add('active');
-  document.getElementById('nav-' + name)?.classList.add('active');
-  if (name === 'add' && !editingId) resetForm();
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+name)?.classList.add('active');
+  document.getElementById('nav-'+name)?.classList.add('active');
+  if(name==='add'&&!editingId) resetForm();
 };
 
-// ===== FORM =====
+function initCategoryUI() {
+  document.getElementById('catBtns').innerHTML = Object.keys(CATEGORIES).map(cat=>
+    `<button class="cat-btn" onclick="selectCategory('${cat}')">${cat}</button>`
+  ).join('');
+}
+
+window.selectCategory = cat => {
+  document.getElementById('f_category').value = cat;
+  document.getElementById('f_type').value = '';
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.toggle('on',b.textContent===cat));
+  document.getElementById('subBtns').innerHTML = CATEGORIES[cat].map(t=>
+    `<button class="sub-btn" onclick="selectType('${t}')">${t}</button>`
+  ).join('');
+  document.getElementById('nihonshu-detail').style.display = cat==='日本酒'?'block':'none';
+};
+
+window.selectType = type => {
+  document.getElementById('f_type').value = type;
+  document.querySelectorAll('.sub-btn').forEach(b=>b.classList.toggle('on',b.textContent===type));
+};
+
 window.resetForm = () => {
-  editingId = null; photoBase64 = null; aiData = null;
-  document.getElementById('addTitle').textContent = '新しい記録';
-  document.getElementById('f_name').value = '';
-  document.getElementById('f_brewery').value = '';
-  document.getElementById('f_type').value = '日本酒';
-  document.getElementById('f_pref').value = '';
-  document.getElementById('f_polish').value = '';
-  document.getElementById('f_rice').value = '';
-  document.getElementById('f_price').value = '';
-  document.getElementById('f_place').value = '';
-  document.getElementById('f_date').value = new Date().toISOString().slice(0,10);
-  document.getElementById('f_memo').value = '';
-  ['sweet','body','acid','finish'].forEach(k => { document.getElementById('t_'+k).value = 3; });
-  document.querySelector('input[name="rt"][value="3"]').checked = true;
+  editingId=null; photoBase64=null; aiData=null;
+  document.getElementById('addTitle').textContent='新しい記録';
+  ['f_name','f_brewery','f_polish','f_rice','f_smv','f_acid','f_price','f_place','f_memo','f_country'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.value='';
+  });
+  document.getElementById('f_pref').value='';
+  document.getElementById('f_date').value=new Date().toISOString().slice(0,10);
+  document.getElementById('f_category').value='';
+  document.getElementById('f_type').value='';
+  ['sweet','body','sour','finish'].forEach(k=>document.getElementById('t_'+k).value=3);
+  document.querySelector('input[name="rt"][value="3"]').checked=true;
   updateStars();
-  document.getElementById('photoPrev').style.display = 'none';
-  document.getElementById('photoPh').style.display = 'block';
-  document.getElementById('aiBox').style.display = 'none';
-  document.getElementById('deleteBtn').style.display = 'none';
+  document.getElementById('photoPrev').style.display='none';
+  document.getElementById('photoPh').style.display='block';
+  document.getElementById('aiBox').style.display='none';
+  document.getElementById('deleteBtn').style.display='none';
+  document.getElementById('nihonshu-detail').style.display='none';
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('subBtns').innerHTML='';
 };
 
 function getFormData() {
-  const rt = document.querySelector('input[name="rt"]:checked');
+  const rt=document.querySelector('input[name="rt"]:checked');
   return {
-    name: document.getElementById('f_name').value.trim(),
-    brewery: document.getElementById('f_brewery').value.trim(),
-    type: document.getElementById('f_type').value,
-    pref: document.getElementById('f_pref').value,
-    polish: document.getElementById('f_polish').value.trim(),
-    rice: document.getElementById('f_rice').value.trim(),
-    price: document.getElementById('f_price').value || '',
-    place: document.getElementById('f_place').value.trim(),
-    date: document.getElementById('f_date').value,
-    rating: rt ? parseInt(rt.value) : 3,
-    taste: {
-      sweet: parseInt(document.getElementById('t_sweet').value),
-      body: parseInt(document.getElementById('t_body').value),
-      acid: parseInt(document.getElementById('t_acid').value),
-      finish: parseInt(document.getElementById('t_finish').value)
+    name:document.getElementById('f_name').value.trim(),
+    brewery:document.getElementById('f_brewery').value.trim(),
+    category:document.getElementById('f_category').value,
+    type:document.getElementById('f_type').value,
+    pref:document.getElementById('f_pref').value,
+    country:document.getElementById('f_country').value.trim(),
+    polish:document.getElementById('f_polish').value.trim(),
+    rice:document.getElementById('f_rice').value.trim(),
+    smv:document.getElementById('f_smv').value.trim(),
+    acid:document.getElementById('f_acid').value.trim(),
+    price:document.getElementById('f_price').value||'',
+    place:document.getElementById('f_place').value.trim(),
+    date:document.getElementById('f_date').value,
+    rating:rt?parseInt(rt.value):3,
+    taste:{
+      sweet:parseInt(document.getElementById('t_sweet').value),
+      body:parseInt(document.getElementById('t_body').value),
+      sour:parseInt(document.getElementById('t_sour').value),
+      finish:parseInt(document.getElementById('t_finish').value)
     },
-    memo: document.getElementById('f_memo').value.trim(),
-    updatedAt: Date.now()
+    memo:document.getElementById('f_memo').value.trim(),
+    updatedAt:Date.now()
   };
 }
 
 window.saveSake = async () => {
-  const data = getFormData();
-  if (!data.name) { alert('銘柄名を入力してください'); return; }
+  const data=getFormData();
+  if(!data.name){alert('銘柄名を入力してください');return;}
   showSync('保存中...');
   try {
-    let id = editingId;
-    if (!id) {
-      const newRef = push(sakesRef);
-      id = newRef.key;
+    let id=editingId;
+    if(!id){const nr=push(sakesRef);id=nr.key;}
+    if(photoBase64&&photoBase64.startsWith('data:')){
+      const safeName=(data.name||'sake').replace(/[^a-zA-Z0-9ぁ-んァ-ン一-龥]/g,'_').slice(0,20);
+      const safeDate=(data.date||'').replace(/-/g,'');
+      const fileName=`${safeName}_${safeDate}_${id}.jpg`;
+      const imgRef=sRef(storage,`photos/${fileName}`);
+      const compressed=await compressImage(photoBase64);
+      await uploadString(imgRef,compressed,'data_url');
+      data.photoURL=await getDownloadURL(imgRef);
+      data.photoFileName=fileName;
+    } else if(photoBase64){
+      data.photoURL=photoBase64;
     }
-    // Upload photo if new
-    if (photoBase64 && photoBase64.startsWith('data:')) {
-      const imgRef = sRef(storage, `photos/${id}.jpg`);
-      const compressed = await compressImage(photoBase64);
-      await uploadString(imgRef, compressed, 'data_url');
-      data.photoURL = await getDownloadURL(imgRef);
-    } else if (photoBase64) {
-      data.photoURL = photoBase64; // already a URL
-    }
-    await set(ref(db, 'sakes/' + id), data);
+    await set(ref(db,'sakes/'+id),data);
     showSync('保存しました');
     switchPage('list');
-    editingId = null;
-  } catch(e) {
-    console.error(e);
-    alert('保存に失敗しました: ' + e.message);
-  }
+    editingId=null;
+  } catch(e){console.error(e);alert('保存に失敗しました: '+e.message);}
 };
 
 window.deleteSake = async () => {
-  if (!confirm('この記録を削除しますか？')) return;
+  if(!confirm('この記録を削除しますか？'))return;
   try {
-    // Delete photo from storage if exists
-    const s = sakes[editingId];
-    if (s?.photoURL) {
-      try { await deleteObject(sRef(storage, `photos/${editingId}.jpg`)); } catch(e) {}
-    }
-    await remove(ref(db, 'sakes/' + editingId));
+    const s=sakes[editingId];
+    if(s?.photoFileName){try{await deleteObject(sRef(storage,'photos/'+s.photoFileName));}catch(e){}}
+    await remove(ref(db,'sakes/'+editingId));
     showSync('削除しました');
     switchPage('list');
-    editingId = null;
-  } catch(e) { alert('削除に失敗しました'); }
+    editingId=null;
+  } catch(e){alert('削除に失敗しました');}
 };
 
-// ===== IMAGE COMPRESSION =====
-async function compressImage(dataUrl) {
-  return new Promise(resolve => {
-    const img = new Image();
-    img.onload = () => {
-      const MAX = 800;
-      let w = img.width, h = img.height;
-      if (w > MAX || h > MAX) {
-        if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
-        else { w = Math.round(w * MAX / h); h = MAX; }
-      }
-      const canvas = document.createElement('canvas');
-      canvas.width = w; canvas.height = h;
-      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-      resolve(canvas.toDataURL('image/jpeg', 0.72));
-    };
-    img.src = dataUrl;
+async function compressImage(dataUrl){
+  return new Promise(resolve=>{
+    const img=new Image();
+    img.onload=()=>{
+      const MAX=800;let w=img.width,h=img.height;
+      if(w>MAX||h>MAX){if(w>h){h=Math.round(h*MAX/w);w=MAX;}else{w=Math.round(w*MAX/h);h=MAX;}}
+      const c=document.createElement('canvas');c.width=w;c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h);
+      resolve(c.toDataURL('image/jpeg',0.72));
+    };img.src=dataUrl;
   });
 }
 
-// ===== PHOTO + AI =====
 window.handlePhoto = async e => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = async ev => {
-    const b64 = ev.target.result;
-    photoBase64 = b64;
-    const prev = document.getElementById('photoPrev');
-    prev.src = b64; prev.style.display = 'block';
-    document.getElementById('photoPh').style.display = 'none';
+  const file=e.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=async ev=>{
+    const b64=ev.target.result;photoBase64=b64;
+    const prev=document.getElementById('photoPrev');
+    prev.src=b64;prev.style.display='block';
+    document.getElementById('photoPh').style.display='none';
     await analyzeLabel(b64);
-  };
-  reader.readAsDataURL(file);
+  };reader.readAsDataURL(file);
 };
 
-async function analyzeLabel(b64) {
+async function analyzeLabel(b64){
   document.getElementById('aiLoad').classList.add('show');
-  document.getElementById('aiBox').style.display = 'none';
+  document.getElementById('aiBox').style.display='none';
   try {
-    const base64 = b64.split(',')[1];
-    const mime = b64.split(';')[0].split(':')[1];
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 500,
-        messages: [{
-          role: 'user',
-          content: [
-            { type: 'image', source: { type: 'base64', media_type: mime, data: base64 } },
-            { type: 'text', text: 'このお酒のラベル画像から情報を読み取って、以下のJSON形式のみで返してください（余分なテキスト不要）：\n{"name":"銘柄名","brewery":"蔵元名","type":"種別（純米大吟醸/純米吟醸/純米/吟醸/本醸造/生酒/にごり酒/ビール/ワイン/焼酎/ウイスキーなど）","pref":"都道府県","polish":"精米歩合","rice":"酒米","notes":"特徴（30字以内）"}\n読み取れない項目は空文字にしてください。' }
-          ]
-        }]
+    const base64=b64.split(',')[1],mime=b64.split(';')[0].split(':')[1];
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',max_tokens:600,
+        messages:[{role:'user',content:[
+          {type:'image',source:{type:'base64',media_type:mime,data:base64}},
+          {type:'text',text:'このお酒のラベル画像から情報を読み取って、以下のJSON形式のみで返してください（余分なテキスト不要）：\n{"name":"銘柄名","brewery":"蔵元名","category":"カテゴリ（日本酒/ビール/ワイン/焼酎/ウイスキー/その他）","type":"種別（純米大吟醸/純米吟醸/純米/吟醸/本醸造/生酒/にごり酒/IPA/ラガーなど）","pref":"都道府県（日本の場合）","country":"国名（海外の場合）","polish":"精米歩合","rice":"酒米","notes":"特徴（30字以内）"}\n読み取れない項目は空文字にしてください。'}
+        ]}]
       })
     });
-    const d = await res.json();
-    const txt = d.content?.map(c => c.text||'').join('');
-    aiData = JSON.parse(txt.replace(/```json|```/g,'').trim());
-    const labels = {name:'銘柄名',brewery:'蔵元',type:'種別',pref:'都道府県',polish:'精米歩合',rice:'酒米',notes:'特徴'};
-    document.getElementById('aiRows').innerHTML = Object.entries(aiData)
-      .filter(([k,v]) => v && labels[k])
-      .map(([k,v]) => `<div class="ai-row"><span class="ai-key">${labels[k]}</span><span class="ai-val">${v}</span></div>`)
+    const d=await res.json();
+    const txt=d.content?.map(c=>c.text||'').join('');
+    aiData=JSON.parse(txt.replace(/```json|```/g,'').trim());
+    const labels={name:'銘柄名',brewery:'蔵元',category:'カテゴリ',type:'種別',pref:'都道府県',country:'国',polish:'精米歩合',rice:'酒米',notes:'特徴'};
+    document.getElementById('aiRows').innerHTML=Object.entries(aiData)
+      .filter(([k,v])=>v&&labels[k])
+      .map(([k,v])=>`<div class="ai-row"><span class="ai-key">${labels[k]}</span><span class="ai-val">${v}</span></div>`)
       .join('');
-    document.getElementById('aiBox').style.display = 'block';
-  } catch(e) { console.error(e); }
+    document.getElementById('aiBox').style.display='block';
+  }catch(e){console.error(e);}
   document.getElementById('aiLoad').classList.remove('show');
 }
 
 window.applyAI = () => {
-  if (!aiData) return;
-  if (aiData.name) document.getElementById('f_name').value = aiData.name;
-  if (aiData.brewery) document.getElementById('f_brewery').value = aiData.brewery;
-  if (aiData.type) {
-    const sel = document.getElementById('f_type');
-    for (const o of sel.options) { if (o.value === aiData.type) { sel.value = aiData.type; break; } }
-  }
-  if (aiData.pref) {
-    const sel = document.getElementById('f_pref');
-    for (const o of sel.options) { if (o.text === aiData.pref) { sel.value = o.value; break; } }
-  }
-  if (aiData.polish) document.getElementById('f_polish').value = aiData.polish;
-  if (aiData.rice) document.getElementById('f_rice').value = aiData.rice;
-  if (aiData.notes) document.getElementById('f_memo').value = aiData.notes;
-  document.getElementById('aiBox').style.display = 'none';
+  if(!aiData)return;
+  if(aiData.name) document.getElementById('f_name').value=aiData.name;
+  if(aiData.brewery) document.getElementById('f_brewery').value=aiData.brewery;
+  if(aiData.category&&CATEGORIES[aiData.category]) selectCategory(aiData.category);
+  if(aiData.type) setTimeout(()=>selectType(aiData.type),50);
+  if(aiData.pref) document.getElementById('f_pref').value=aiData.pref;
+  if(aiData.country) document.getElementById('f_country').value=aiData.country;
+  if(aiData.polish) document.getElementById('f_polish').value=aiData.polish;
+  if(aiData.rice) document.getElementById('f_rice').value=aiData.rice;
+  if(aiData.notes) document.getElementById('f_memo').value=aiData.notes;
+  document.getElementById('aiBox').style.display='none';
 };
 
-// ===== STARS =====
-function updateStars() {
-  const rt = document.querySelector('input[name="rt"]:checked');
-  const val = rt ? parseInt(rt.value) : 0;
-  document.querySelectorAll('.star-in label').forEach((l, i) => {
-    l.classList.toggle('on', (5 - i) <= val);
-  });
+function updateStars(){
+  const rt=document.querySelector('input[name="rt"]:checked');
+  const val=rt?parseInt(rt.value):0;
+  document.querySelectorAll('.star-in label').forEach((l,i)=>l.classList.toggle('on',(5-i)<=val));
 }
-document.querySelectorAll('input[name="rt"]').forEach(r => r.addEventListener('change', updateStars));
+document.querySelectorAll('input[name="rt"]').forEach(r=>r.addEventListener('change',updateStars));
 
-// ===== LIST RENDER =====
-function getFiltered() {
-  return Object.entries(sakes)
-    .map(([id, s]) => ({...s, id}))
-    .filter(s => {
-      const q = filterSearch.toLowerCase();
-      const ms = !q || s.name?.toLowerCase().includes(q) || s.brewery?.toLowerCase().includes(q);
-      const mt = filterType === 'all' || s.type === filterType || s.type?.includes(filterType);
-      const mp = !filterPref || s.pref === filterPref;
-      return ms && mt && mp;
-    })
-    .sort((a,b) => (b.updatedAt||0) - (a.updatedAt||0));
+function getFiltered(){
+  return Object.entries(sakes).map(([id,s])=>({...s,id}))
+    .filter(s=>{
+      const q=filterSearch.toLowerCase();
+      const ms=!q||s.name?.toLowerCase().includes(q)||s.brewery?.toLowerCase().includes(q)||s.rice?.toLowerCase().includes(q);
+      const mt=currentFilter==='all'||s.category===currentFilter||s.type===currentFilter;
+      const mp=!filterPref||s.pref===filterPref;
+      return ms&&mt&&mp;
+    }).sort((a,b)=>(b.updatedAt||0)-(a.updatedAt||0));
 }
 
 window.renderList = () => {
-  const filtered = getFiltered();
-  const list = document.getElementById('sakeList');
-  const empty = document.getElementById('emptyState');
-  if (!filtered.length) {
-    list.innerHTML = ''; empty.style.display = 'block'; return;
-  }
-  empty.style.display = 'none';
-  list.innerHTML = filtered.map(s => `
+  const filtered=getFiltered();
+  const list=document.getElementById('sakeList'),empty=document.getElementById('emptyState');
+  if(!filtered.length){list.innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';
+  list.innerHTML=filtered.map(s=>`
     <div class="card" onclick="openDetail('${s.id}')">
-      <div class="cimg">${s.photoURL ? `<img src="${s.photoURL}" alt="">` : '🍶'}</div>
+      <div class="cimg">${s.photoURL?`<img src="${s.photoURL}" alt="">`:'🍶'}</div>
       <div class="cbody">
         <div class="cname">${s.name||'（銘柄未入力）'}</div>
-        <div class="cbrew">${s.brewery||''}</div>
+        <div class="cbrew">${s.brewery||''}${s.pref?' · '+s.pref:s.country?' · '+s.country:''}</div>
         <div class="cmeta">
           ${s.type?`<span class="tag t">${s.type}</span>`:''}
-          ${s.pref?`<span class="tag">${s.pref}</span>`:''}
+          ${s.rice?`<span class="tag">🌾 ${s.rice}</span>`:''}
           ${s.polish?`<span class="tag">${s.polish}</span>`:''}
         </div>
-        <div class="cbot">
-          <div class="stars">${starsHTML(s.rating||0)}</div>
-          <span class="cdate">${s.date||''}</span>
-        </div>
+        <div class="cbot"><div class="stars">${starsHTML(s.rating||0)}</div><span class="cdate">${s.date||''}</span></div>
       </div>
     </div>`).join('');
 };
 
-function starsHTML(n) {
-  return [5,4,3,2,1].map(i => `<span class="st${i<=n?'':' e'}">★</span>`).join('');
-}
+function starsHTML(n){return[5,4,3,2,1].map(i=>`<span class="st${i<=n?'':' e'}">★</span>`).join('');}
 
-document.getElementById('searchInput').addEventListener('input', e => { filterSearch = e.target.value; renderList(); });
+document.getElementById('searchInput').addEventListener('input',e=>{filterSearch=e.target.value;renderList();});
 
-window.filterType = (t, btn) => {
-  filterType = t;
-  document.querySelectorAll('.tbtn').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  renderList();
+window.filterType=(t,btn)=>{
+  currentFilter=t;
+  document.querySelectorAll('.tbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');renderList();
 };
 
-window.cyclePref = () => {
-  const prefs = [...new Set(Object.values(sakes).filter(s=>s.pref).map(s=>s.pref))].sort();
-  if (!prefs.length) return;
-  const idx = prefs.indexOf(filterPref);
-  filterPref = prefs[(idx + 1) % (prefs.length + 1)] || '';
-  const btn = document.getElementById('prefBtn');
-  btn.textContent = filterPref ? `${filterPref} ×` : '都道府県 ▾';
-  btn.classList.toggle('on', !!filterPref);
-  renderList();
+window.cyclePref=()=>{
+  const prefs=[...new Set(Object.values(sakes).filter(s=>s.pref).map(s=>s.pref))].sort();
+  if(!prefs.length)return;
+  const idx=prefs.indexOf(filterPref);
+  filterPref=prefs[(idx+1)%(prefs.length+1)]||'';
+  const btn=document.getElementById('prefBtn');
+  btn.textContent=filterPref?`${filterPref} ×`:'産地 ▾';
+  btn.classList.toggle('on',!!filterPref);renderList();
 };
 
-// ===== DETAIL =====
-window.openDetail = id => {
-  const s = {...sakes[id], id};
-  currentDetailId = id;
-  document.getElementById('d_name').textContent = s.name||'—';
-  document.getElementById('d_brew').textContent = s.brewery||'';
-  document.getElementById('d_stars').innerHTML = [5,4,3,2,1].map(i=>`<span class="dst${i<=(s.rating||0)?'':' e'}">★</span>`).join('');
-  const tags = [s.type,s.pref,s.polish,s.rice].filter(Boolean);
-  document.getElementById('d_tags').innerHTML = tags.map(t=>`<span class="dtag">${t}</span>`).join('');
-  document.getElementById('d_img').innerHTML = s.photoURL
-    ? `<img src="${s.photoURL}" alt="" style="width:100%;height:100%;object-fit:cover">`
-    : `<div class="diph">🍶</div>`;
-  const rows = [];
-  if (s.date) rows.push(['飲んだ日', s.date]);
-  if (s.price) rows.push(['価格', `¥${parseInt(s.price).toLocaleString()}`]);
-  if (s.place) rows.push(['購入場所', s.place]);
-  if (s.pref) rows.push(['産地', s.pref]);
-  if (s.polish) rows.push(['精米歩合', s.polish]);
-  if (s.rice) rows.push(['酒米', s.rice]);
-  document.getElementById('d_rows').innerHTML = rows.map(([k,v])=>`<div class="drow"><span class="dk">${k}</span><span class="dv">${v}</span></div>`).join('');
-  if (s.memo) { document.getElementById('d_memo_sec').style.display='block'; document.getElementById('d_memo').textContent=s.memo; }
-  else { document.getElementById('d_memo_sec').style.display='none'; }
+window.openDetail=id=>{
+  const s={...sakes[id],id};currentDetailId=id;
+  document.getElementById('d_name').textContent=s.name||'—';
+  document.getElementById('d_brew').textContent=[s.brewery,s.pref||s.country].filter(Boolean).join(' · ');
+  document.getElementById('d_stars').innerHTML=[5,4,3,2,1].map(i=>`<span class="dst${i<=(s.rating||0)?'':' e'}">★</span>`).join('');
+  const tags=[s.type,s.pref||s.country,s.polish,s.rice].filter(Boolean);
+  document.getElementById('d_tags').innerHTML=tags.map(t=>`<span class="dtag">${t}</span>`).join('');
+  document.getElementById('d_img').innerHTML=s.photoURL
+    ?`<img src="${s.photoURL}" alt="" style="width:100%;height:100%;object-fit:cover">`
+    :`<div class="diph">🍶</div>`;
+  const rows=[];
+  if(s.date)rows.push(['飲んだ日',s.date]);
+  if(s.price)rows.push(['価格',`¥${parseInt(s.price).toLocaleString()}`]);
+  if(s.place)rows.push(['購入場所',s.place]);
+  if(s.pref)rows.push(['産地',s.pref]);
+  if(s.country)rows.push(['国',s.country]);
+  if(s.polish)rows.push(['精米歩合',s.polish]);
+  if(s.rice)rows.push(['酒米',s.rice]);
+  if(s.smv)rows.push(['日本酒度',s.smv]);
+  if(s.acid)rows.push(['酸度',s.acid]);
+  document.getElementById('d_rows').innerHTML=rows.map(([k,v])=>`<div class="drow"><span class="dk">${k}</span><span class="dv">${v}</span></div>`).join('');
+  if(s.memo){document.getElementById('d_memo_sec').style.display='block';document.getElementById('d_memo').textContent=s.memo;}
+  else document.getElementById('d_memo_sec').style.display='none';
   document.getElementById('detailOv').classList.add('open');
   drawRadar(s.taste);
 };
 
-window.closeDetail = () => { document.getElementById('detailOv').classList.remove('open'); currentDetailId = null; };
+window.closeDetail=()=>{document.getElementById('detailOv').classList.remove('open');currentDetailId=null;};
 
-window.editCurrent = () => {
-  const s = {...sakes[currentDetailId], id: currentDetailId};
-  closeDetail();
-  editingId = s.id;
-  document.getElementById('addTitle').textContent = '記録を編集';
-  document.getElementById('f_name').value = s.name||'';
-  document.getElementById('f_brewery').value = s.brewery||'';
-  document.getElementById('f_type').value = s.type||'日本酒';
-  document.getElementById('f_pref').value = s.pref||'';
-  document.getElementById('f_polish').value = s.polish||'';
-  document.getElementById('f_rice').value = s.rice||'';
-  document.getElementById('f_price').value = s.price||'';
-  document.getElementById('f_place').value = s.place||'';
-  document.getElementById('f_date').value = s.date||new Date().toISOString().slice(0,10);
-  document.getElementById('f_memo').value = s.memo||'';
-  if (s.taste) { ['sweet','body','acid','finish'].forEach(k => { document.getElementById('t_'+k).value = s.taste[k]||3; }); }
-  document.querySelectorAll('input[name="rt"]').forEach(r => { r.checked = parseInt(r.value) === (s.rating||3); });
+window.editCurrent=()=>{
+  const s={...sakes[currentDetailId],id:currentDetailId};
+  closeDetail();editingId=s.id;
+  document.getElementById('addTitle').textContent='記録を編集';
+  document.getElementById('f_name').value=s.name||'';
+  document.getElementById('f_brewery').value=s.brewery||'';
+  document.getElementById('f_pref').value=s.pref||'';
+  document.getElementById('f_country').value=s.country||'';
+  document.getElementById('f_polish').value=s.polish||'';
+  document.getElementById('f_rice').value=s.rice||'';
+  document.getElementById('f_smv').value=s.smv||'';
+  document.getElementById('f_acid').value=s.acid||'';
+  document.getElementById('f_price').value=s.price||'';
+  document.getElementById('f_place').value=s.place||'';
+  document.getElementById('f_date').value=s.date||new Date().toISOString().slice(0,10);
+  document.getElementById('f_memo').value=s.memo||'';
+  if(s.category){selectCategory(s.category);setTimeout(()=>{if(s.type)selectType(s.type);},50);}
+  if(s.taste){['sweet','body','sour','finish'].forEach(k=>document.getElementById('t_'+k).value=s.taste[k]||3);}
+  document.querySelectorAll('input[name="rt"]').forEach(r=>r.checked=parseInt(r.value)===(s.rating||3));
   updateStars();
-  if (s.photoURL) {
-    photoBase64 = s.photoURL;
-    document.getElementById('photoPrev').src = s.photoURL;
-    document.getElementById('photoPrev').style.display = 'block';
-    document.getElementById('photoPh').style.display = 'none';
-  } else {
-    photoBase64 = null;
-    document.getElementById('photoPrev').style.display = 'none';
-    document.getElementById('photoPh').style.display = 'block';
-  }
-  document.getElementById('aiBox').style.display = 'none';
-  document.getElementById('deleteBtn').style.display = 'block';
+  if(s.photoURL){photoBase64=s.photoURL;document.getElementById('photoPrev').src=s.photoURL;document.getElementById('photoPrev').style.display='block';document.getElementById('photoPh').style.display='none';}
+  else{photoBase64=null;document.getElementById('photoPrev').style.display='none';document.getElementById('photoPh').style.display='block';}
+  document.getElementById('aiBox').style.display='none';
+  document.getElementById('deleteBtn').style.display='block';
   switchPage('add');
 };
 
-// ===== RADAR =====
-function drawRadar(taste) {
-  const canvas = document.getElementById('radarC');
-  const ctx = canvas.getContext('2d');
-  const W=200,H=200,cx=100,cy=100,r=65;
-  ctx.clearRect(0,0,W,H);
+function drawRadar(taste){
+  const canvas=document.getElementById('radarC'),ctx=canvas.getContext('2d');
+  const W=200,H=200,cx=100,cy=100,r=65;ctx.clearRect(0,0,W,H);
   const labels=['甘辛','濃淡','酸味','余韻'];
-  const vals=[taste?.sweet||3,taste?.body||3,taste?.acid||3,taste?.finish||3];
-  const angles=labels.map((_,i)=>-Math.PI/2+(2*Math.PI/4)*i);
+  const vals=[taste?.sweet||3,taste?.body||3,taste?.sour||3,taste?.finish||3];
+  const angles=labels.map((_,i)=>-Math.PI/2+(Math.PI/2)*i);
   for(let g=1;g<=5;g++){
-    ctx.beginPath();
-    angles.forEach((a,i)=>{const x=cx+(r*g/5)*Math.cos(a),y=cy+(r*g/5)*Math.sin(a);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-    ctx.closePath(); ctx.strokeStyle='#d4c4a030'; ctx.lineWidth=1; ctx.stroke();
+    ctx.beginPath();angles.forEach((a,i)=>{const x=cx+(r*g/5)*Math.cos(a),y=cy+(r*g/5)*Math.sin(a);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+    ctx.closePath();ctx.strokeStyle='#d4c4a030';ctx.lineWidth=1;ctx.stroke();
   }
   angles.forEach(a=>{ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));ctx.strokeStyle='#d4c4a040';ctx.lineWidth=1;ctx.stroke();});
-  ctx.beginPath();
-  angles.forEach((a,i)=>{const rv=(vals[i]/5)*r,x=cx+rv*Math.cos(a),y=cy+rv*Math.sin(a);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-  ctx.closePath(); ctx.fillStyle='rgba(139,26,26,0.22)'; ctx.fill(); ctx.strokeStyle='#8b1a1a'; ctx.lineWidth=2; ctx.stroke();
+  ctx.beginPath();angles.forEach((a,i)=>{const rv=(vals[i]/5)*r,x=cx+rv*Math.cos(a),y=cy+rv*Math.sin(a);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+  ctx.closePath();ctx.fillStyle='rgba(139,26,26,0.22)';ctx.fill();ctx.strokeStyle='#8b1a1a';ctx.lineWidth=2;ctx.stroke();
   angles.forEach((a,i)=>{const rv=(vals[i]/5)*r;ctx.beginPath();ctx.arc(cx+rv*Math.cos(a),cy+rv*Math.sin(a),4,0,Math.PI*2);ctx.fillStyle='#8b1a1a';ctx.fill();});
   angles.forEach((a,i)=>{const lx=cx+(r+18)*Math.cos(a),ly=cy+(r+18)*Math.sin(a);ctx.fillStyle='#7a6040';ctx.font='11px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(labels[i],lx,ly);});
 }
 
-// ===== REPORT =====
-window.buildReport = () => {
-  const arr = Object.values(sakes);
-  const total = arr.length;
-  const prefs = [...new Set(arr.filter(s=>s.pref).map(s=>s.pref))];
-  const avg = total ? (arr.reduce((a,s)=>a+(s.rating||0),0)/total).toFixed(1) : '—';
-  const now = new Date();
-  const thisMonth = arr.filter(s=>{if(!s.date)return false;const d=new Date(s.date);return d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth();}).length;
-  document.getElementById('stTotal').textContent = total;
-  document.getElementById('stPrefs').textContent = prefs.length;
-  document.getElementById('stAvg').textContent = avg;
-  document.getElementById('stMonth').textContent = thisMonth;
-
-  // Type pie chart
-  const typeCnt = {};
-  arr.forEach(s=>{ if(s.type) typeCnt[s.type]=(typeCnt[s.type]||0)+1; });
-  const typeEntries = Object.entries(typeCnt).sort((a,b)=>b[1]-a[1]).slice(0,8);
-  const palette = ['#8b1a1a','#c9a227','#2d6a4f','#1a4a6b','#6b3d1a','#4a1a6b','#1a6b5a','#6b1a4a'];
+window.buildReport=()=>{
+  const arr=Object.values(sakes);const total=arr.length;
+  const locs=new Set([...arr.filter(s=>s.pref).map(s=>s.pref),...arr.filter(s=>s.country).map(s=>s.country)]);
+  const avg=total?(arr.reduce((a,s)=>a+(s.rating||0),0)/total).toFixed(1):'—';
+  const now=new Date();
+  const thisMonth=arr.filter(s=>{if(!s.date)return false;const d=new Date(s.date);return d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth();}).length;
+  document.getElementById('stTotal').textContent=total;
+  document.getElementById('stPrefs').textContent=locs.size;
+  document.getElementById('stAvg').textContent=avg;
+  document.getElementById('stMonth').textContent=thisMonth;
+  buildMap(arr);
+  const typeCnt={};arr.forEach(s=>{const k=s.type||s.category||'未分類';typeCnt[k]=(typeCnt[k]||0)+1;});
+  const te=Object.entries(typeCnt).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const pal=['#8b1a1a','#c9a227','#2d6a4f','#1a4a6b','#6b3d1a','#4a1a6b','#1a6b5a','#6b1a4a'];
   destroyChart('typeChart');
-  chartInstances.typeChart = new Chart(document.getElementById('typeChart'), {
-    type: 'doughnut',
-    data: { labels: typeEntries.map(e=>e[0]), datasets: [{ data: typeEntries.map(e=>e[1]), backgroundColor: palette, borderWidth: 0 }] },
-    options: { responsive: true, plugins: { legend: { position: 'right', labels: { font: { size: 11, family: "'Noto Sans JP'" }, color: '#7a6040', padding: 8 } } } }
-  });
-
-  // Monthly bar chart
-  const monthCnt = {};
-  arr.forEach(s=>{ if(s.date){ const m=s.date.slice(0,7); monthCnt[m]=(monthCnt[m]||0)+1; } });
-  const months = Object.keys(monthCnt).sort().slice(-12);
+  chartInstances.typeChart=new Chart(document.getElementById('typeChart'),{type:'doughnut',data:{labels:te.map(e=>e[0]),datasets:[{data:te.map(e=>e[1]),backgroundColor:pal,borderWidth:0}]},options:{responsive:true,plugins:{legend:{position:'right',labels:{font:{size:11,family:"'Noto Sans JP'"},color:'#7a6040',padding:8}}}}});
+  const mc={};arr.forEach(s=>{if(s.date){const m=s.date.slice(0,7);mc[m]=(mc[m]||0)+1;}});
+  const months=Object.keys(mc).sort().slice(-12);
   destroyChart('monthChart');
-  chartInstances.monthChart = new Chart(document.getElementById('monthChart'), {
-    type: 'bar',
-    data: { labels: months.map(m=>m.replace('-','/')), datasets: [{ data: months.map(m=>monthCnt[m]), backgroundColor: '#8b1a1a88', borderRadius: 4 }] },
-    options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#b89d72', font: { size: 10 } }, grid: { color: '#d4c4a020' } }, x: { ticks: { color: '#b89d72', font: { size: 10 } }, grid: { display: false } } } }
-  });
-
-  // Quadrant scatter: rating x price
-  const scatter = arr.filter(s=>s.price&&s.rating).map(s=>({x:parseInt(s.price),y:s.rating,label:s.name}));
+  chartInstances.monthChart=new Chart(document.getElementById('monthChart'),{type:'bar',data:{labels:months.map(m=>m.replace('-','/')),datasets:[{data:months.map(m=>mc[m]),backgroundColor:'#8b1a1a88',borderRadius:4}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{ticks:{color:'#b89d72',font:{size:10}},grid:{color:'#d4c4a020'}},x:{ticks:{color:'#b89d72',font:{size:10}},grid:{display:false}}}}});
+  const sc=arr.filter(s=>s.price&&s.rating).map(s=>({x:parseInt(s.price),y:s.rating,label:s.name}));
   destroyChart('quadChart');
-  if (scatter.length > 0) {
-    const avgPrice = scatter.reduce((a,s)=>a+s.x,0)/scatter.length;
-    const avgRating = scatter.reduce((a,s)=>a+s.y,0)/scatter.length;
-    chartInstances.quadChart = new Chart(document.getElementById('quadChart'), {
-      type: 'scatter',
-      data: { datasets: [{ data: scatter, backgroundColor: '#8b1a1acc', pointRadius: 6, pointHoverRadius: 8 }] },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: false },
-          tooltip: { callbacks: { label: ctx => ctx.raw.label || '' } },
-          annotation: {}
-        },
-        scales: {
-          x: { title: { display: true, text: '価格（¥）', color: '#b89d72', font: { size: 11 } }, ticks: { color: '#b89d72', font: { size: 10 } }, grid: { color: '#d4c4a020' } },
-          y: { min: 0, max: 5.5, title: { display: true, text: '評価', color: '#b89d72', font: { size: 11 } }, ticks: { color: '#b89d72', font: { size: 10 }, stepSize: 1 }, grid: { color: '#d4c4a020' } }
-        }
-      }
-    });
-  }
-
-  // Pref breakdown
-  const prefCnt = {};
-  arr.forEach(s=>{ if(s.pref) prefCnt[s.pref]=(prefCnt[s.pref]||0)+1; });
-  const prefSorted = Object.entries(prefCnt).sort((a,b)=>b[1]-a[1]);
-  const maxP = prefSorted[0]?.[1]||1;
-  document.getElementById('prefList').innerHTML = prefSorted.length
-    ? `<div class="pttl">都道府県別</div>` + prefSorted.map(([p,c])=>`<div class="pitem"><span class="pname">${p}</span><div class="pbar-w"><div class="pbar" style="width:${Math.round(c/maxP*100)}%"></div></div><span class="pcnt">${c}</span></div>`).join('')
-    : '';
-
-  // Top ranked
-  const top = Object.entries(sakes).map(([id,s])=>({...s,id})).sort((a,b)=>b.rating-a.rating).slice(0,5);
-  document.getElementById('topList').innerHTML = top.length
-    ? `<div class="pttl">評価ランキング</div>` + top.map((s,i)=>`<div class="titem" onclick="openDetail('${s.id}')"><span class="trank ${i<3?'r'+(i+1):''}">${i+1}</span><div class="tinfo"><div class="tname">${s.name||'—'}</div><div class="tbrew">${s.brewery||''}${s.pref?' · '+s.pref:''}</div></div><div class="stars">${starsHTML(s.rating||0)}</div></div>`).join('')
-    : '';
+  if(sc.length>0){chartInstances.quadChart=new Chart(document.getElementById('quadChart'),{type:'scatter',data:{datasets:[{data:sc,backgroundColor:'#8b1a1acc',pointRadius:6,pointHoverRadius:8}]},options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.raw.label||''}}},scales:{x:{title:{display:true,text:'価格（¥）',color:'#b89d72',font:{size:11}},ticks:{color:'#b89d72',font:{size:10}},grid:{color:'#d4c4a020'}},y:{min:0,max:5.5,title:{display:true,text:'評価',color:'#b89d72',font:{size:11}},ticks:{color:'#b89d72',font:{size:10},stepSize:1},grid:{color:'#d4c4a020'}}}}});}
+  const rc={};arr.forEach(s=>{if(s.rice)rc[s.rice]=(rc[s.rice]||0)+1;});
+  const rs=Object.entries(rc).sort((a,b)=>b[1]-a[1]);const mr=rs[0]?.[1]||1;
+  document.getElementById('riceList').innerHTML=rs.length?`<div class="pttl">酒米ランキング 🌾</div>`+rs.map(([r,c])=>`<div class="pitem"><span class="pname">${r}</span><div class="pbar-w"><div class="pbar" style="width:${Math.round(c/mr*100)}%"></div></div><span class="pcnt">${c}</span></div>`).join(''):'';
+  const pc={};arr.forEach(s=>{const l=s.pref||s.country;if(l)pc[l]=(pc[l]||0)+1;});
+  const ps=Object.entries(pc).sort((a,b)=>b[1]-a[1]);const mp2=ps[0]?.[1]||1;
+  document.getElementById('prefList').innerHTML=ps.length?`<div class="pttl">産地ランキング</div>`+ps.map(([p,c])=>`<div class="pitem"><span class="pname">${p}</span><div class="pbar-w"><div class="pbar" style="width:${Math.round(c/mp2*100)}%"></div></div><span class="pcnt">${c}</span></div>`).join(''):'';
+  const top=Object.entries(sakes).map(([id,s])=>({...s,id})).sort((a,b)=>b.rating-a.rating).slice(0,5);
+  document.getElementById('topList').innerHTML=top.length?`<div class="pttl">評価ランキング</div>`+top.map((s,i)=>`<div class="titem" onclick="openDetail('${s.id}')"><span class="trank ${i<3?'r'+(i+1):''}">${i+1}</span><div class="tinfo"><div class="tname">${s.name||'—'}</div><div class="tbrew">${s.brewery||''}${(s.pref||s.country)?' · '+(s.pref||s.country):''}</div></div><div class="stars">${starsHTML(s.rating||0)}</div></div>`).join(''):'';
 };
 
-function destroyChart(id) {
-  if (chartInstances[id]) { chartInstances[id].destroy(); delete chartInstances[id]; }
+function destroyChart(id){if(chartInstances[id]){chartInstances[id].destroy();delete chartInstances[id];}}
+
+window.switchMap=mode=>{
+  currentMap=mode;
+  document.getElementById('mapJpBtn').classList.toggle('on',mode==='japan');
+  document.getElementById('mapWdBtn').classList.toggle('on',mode==='world');
+  buildMap(Object.values(sakes));
+};
+
+function buildMap(arr){currentMap==='japan'?buildJapanMap(arr):buildWorldMap(arr);}
+
+function buildJapanMap(arr){
+  const pc={};arr.forEach(s=>{if(s.pref)pc[s.pref]=(pc[s.pref]||0)+1;});
+  const max=Math.max(...Object.values(pc),1);
+  const getColor=pref=>{
+    const cnt=pc[pref]||0;if(cnt===0)return'#e8dfc8';
+    const t=Math.min(cnt/max,1);
+    const light=[232,223,200],dark=[139,26,26];
+    return`rgb(${Math.round(light[0]+(dark[0]-light[0])*t)},${Math.round(light[1]+(dark[1]-light[1])*t)},${Math.round(light[2]+(dark[2]-light[2])*t)})`;
+  };
+  // 都道府県SVGパス（簡略ポリゴン）
+  const PP={
+    '北海道':'M320,20 L380,25 L395,55 L375,80 L340,85 L315,70 L305,45Z',
+    '青森':'M330,90 L360,88 L365,108 L345,115 L328,108Z',
+    '岩手':'M355,108 L375,105 L380,135 L360,140 L348,128Z',
+    '宮城':'M348,130 L368,128 L372,148 L350,150 L342,142Z',
+    '秋田':'M330,108 L352,106 L350,148 L330,150 L320,132Z',
+    '山形':'M330,150 L352,148 L350,170 L330,172 L322,162Z',
+    '福島':'M322,162 L372,158 L370,182 L322,184Z',
+    '茨城':'M355,185 L378,183 L380,205 L355,207Z',
+    '栃木':'M335,182 L357,182 L355,205 L335,205Z',
+    '群馬':'M315,182 L337,182 L335,202 L315,202Z',
+    '埼玉':'M335,205 L357,205 L355,220 L335,220Z',
+    '千葉':'M357,205 L385,205 L388,228 L360,230Z',
+    '東京':'M335,220 L357,220 L355,230 L335,230Z',
+    '神奈川':'M318,228 L342,226 L340,240 L318,240Z',
+    '新潟':'M285,140 L320,135 L322,165 L295,170 L282,158Z',
+    '富山':'M282,170 L308,168 L305,185 L282,186Z',
+    '石川':'M262,168 L284,168 L282,200 L262,202Z',
+    '福井':'M265,200 L285,198 L282,218 L265,218Z',
+    '山梨':'M310,205 L335,205 L332,222 L310,222Z',
+    '長野':'M285,185 L315,182 L315,222 L285,224Z',
+    '岐阜':'M262,218 L292,215 L290,240 L262,242Z',
+    '静岡':'M315,230 L348,228 L345,248 L315,250Z',
+    '愛知':'M290,240 L318,238 L315,255 L290,257Z',
+    '三重':'M268,240 L292,238 L290,268 L268,270Z',
+    '滋賀':'M245,220 L268,218 L265,242 L245,242Z',
+    '京都':'M222,218 L248,216 L245,240 L222,240Z',
+    '大阪':'M222,240 L248,238 L246,255 L222,255Z',
+    '兵庫':'M200,222 L225,220 L222,255 L200,255Z',
+    '奈良':'M242,242 L265,240 L262,262 L242,262Z',
+    '和歌山':'M222,255 L248,253 L245,278 L222,278Z',
+    '鳥取':'M182,222 L205,220 L202,238 L182,238Z',
+    '島根':'M158,220 L184,218 L182,238 L158,238Z',
+    '岡山':'M185,238 L210,236 L208,255 L185,255Z',
+    '広島':'M160,238 L187,236 L185,258 L160,258Z',
+    '山口':'M135,240 L162,238 L160,258 L135,258Z',
+    '徳島':'M222,262 L248,260 L245,278 L222,278Z',
+    '香川':'M200,255 L225,253 L222,268 L200,268Z',
+    '愛媛':'M175,255 L202,253 L200,272 L175,272Z',
+    '高知':'M185,272 L228,270 L225,292 L185,292Z',
+    '福岡':'M115,242 L140,240 L138,260 L115,260Z',
+    '佐賀':'M100,255 L118,253 L115,268 L100,268Z',
+    '長崎':'M82,255 L102,253 L100,278 L82,278Z',
+    '熊本':'M115,260 L142,258 L140,282 L115,282Z',
+    '大分':'M140,248 L165,246 L162,268 L140,268Z',
+    '宮崎':'M140,278 L165,276 L162,302 L140,302Z',
+    '鹿児島':'M115,282 L142,280 L140,308 L115,308Z',
+    '沖縄':'M82,340 L110,340 L108,355 L82,355Z',
+  };
+  const paths=Object.entries(PP).map(([p,d])=>{
+    const cnt=pc[p]||0;
+    return`<path d="${d}" fill="${getColor(p)}" data-pref="${p}" data-cnt="${cnt}" onmouseover="showMapTip(event,'${p}',${cnt})" onmouseout="hideMapTip()"/>`;
+  }).join('');
+  document.getElementById('mapContainer').innerHTML=`
+    <svg class="japan-map" viewBox="0 0 430 370" width="100%">${paths}</svg>
+    <div style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:10px;color:var(--ink4)">
+      <div style="width:40px;height:6px;background:linear-gradient(to right,#e8dfc8,#8b1a1a);border-radius:3px"></div>
+      <span>記録少 → 多</span>
+    </div>`;
 }
 
-// ===== INIT =====
+function buildWorldMap(arr){
+  const cc={};
+  arr.forEach(s=>{const l=s.country||(s.pref?'日本':null);if(l)cc[l]=(cc[l]||0)+1;});
+  const sorted=Object.entries(cc).sort((a,b)=>b[1]-a[1]);const max=sorted[0]?.[1]||1;
+  document.getElementById('mapContainer').innerHTML=`
+    <div style="font-size:11px;color:var(--ink3);margin-bottom:8px">国別の記録数</div>
+    ${sorted.map(([c,n])=>`<div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--paper3)">
+      <span style="font-size:13px;flex:1;font-family:var(--serif)">${c}</span>
+      <div style="flex:2;background:var(--paper3);border-radius:3px;height:5px;overflow:hidden"><div style="width:${Math.round(n/max*100)}%;height:100%;background:var(--red);border-radius:3px"></div></div>
+      <span style="font-size:11px;color:var(--ink3);min-width:20px;text-align:right">${n}</span>
+    </div>`).join('')}
+    ${sorted.length===0?'<div style="font-size:12px;color:var(--ink4);padding:20px 0;text-align:center">国名を入力した記録がありません</div>':''}`;
+}
+
+window.showMapTip=(e,pref,cnt)=>{
+  const tip=document.getElementById('mapTip');
+  tip.textContent=`${pref}：${cnt}本`;tip.style.display='block';
+  const wrap=document.getElementById('mapWrap').getBoundingClientRect();
+  tip.style.left=(e.clientX-wrap.left+8)+'px';
+  tip.style.top=(e.clientY-wrap.top-28)+'px';
+};
+window.hideMapTip=()=>document.getElementById('mapTip').style.display='none';
+
+// ===== DATALIST (autocomplete) =====
+function updateDatalist() {
+  const arr = Object.values(sakes);
+  // 銘柄名：過去入力から
+  const names = [...new Set(arr.map(s=>s.name).filter(Boolean))].sort();
+  document.getElementById('dl_name').innerHTML = names.map(n=>`<option value="${n}">`).join('');
+  // 蔵元：過去入力から
+  const breweries = [...new Set(arr.map(s=>s.brewery).filter(Boolean))].sort();
+  document.getElementById('dl_brewery').innerHTML = breweries.map(n=>`<option value="${n}">`).join('');
+  // 購入場所：過去入力から
+  const places = [...new Set(arr.map(s=>s.place).filter(Boolean))].sort();
+  document.getElementById('dl_place').innerHTML = places.map(n=>`<option value="${n}">`).join('');
+  // 酒米：プリセット＋過去入力をマージ
+  const ricePreset = ['山田錦','五百万石','雄町','美山錦','八反錦','出羽燦々','愛山','千本錦','吟吹雪','強力','亀の尾','神力','渡船','越淡麗','華吹雪','きたしずく','吟風','夢錦','酒未来'];
+  const riceFromData = arr.map(s=>s.rice).filter(Boolean);
+  const riceAll = [...new Set([...ricePreset, ...riceFromData])].sort();
+  document.getElementById('dl_rice').innerHTML = riceAll.map(n=>`<option value="${n}">`).join('');
+}
+
+initCategoryUI();
+updateDatalist();
 resetForm();
 </script>
 </body>
